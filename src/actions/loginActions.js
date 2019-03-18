@@ -4,3 +4,10 @@ export const setUsername = (name) => {
         username: name
     };
 };
+
+export const setPassword = (password) => {
+    return {
+        type: 'setPassword',
+        password: password
+    };
+};

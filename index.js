@@ -9,6 +9,7 @@ import React from 'react';
 
 // // Screens
 import Login from './src/components/login';
+import Home from './src/components/home';
 
 // Router
 import { Router, Stack, Scene } from 'react-native-router-flux';
@@ -25,6 +26,7 @@ const AppContainer = () =>
         <Router>
             <Stack key="root">
                 <Scene key="login" component={Login} title="Login" initial={true} hideNavBar={true}/>
+                <Scene key="home" component={Home} title="Home"/>
             </Stack>
         </Router>
     </Provider>

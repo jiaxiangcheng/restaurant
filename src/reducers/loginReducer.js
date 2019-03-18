@@ -10,6 +10,11 @@ export default function loginReducer (state = initialState, action) {
                 ...state,
                 username: action.username
             };
+        case 'setPassword' :
+            return {
+                ...state,
+                password: action.password
+            }
         default:
             return {
                 ...state
