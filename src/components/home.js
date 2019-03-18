@@ -1,13 +1,18 @@
 import React from "react";
 import { StyleSheet, Text, View, Button, TextInput, Image, FlatList, TouchableOpacity } from "react-native";
 import { connect } from 'react-redux';
+import { Actions } from "react-native-router-flux";
 
 class Home extends React.Component {
 
     render() {
         return (
             <View style={styles.container}>
-                <Text>Login successful!!</Text>
+                <View style={styles.topControls}>
+                    <TouchableOpacity style={styles.button} onPress={() => Actions.settings()}>
+                        <Text>Settings</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
       }
@@ -16,9 +21,12 @@ class Home extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#F5FCFF"
+        alignContent: 'flex-start',
+        backgroundColor: "#F5FCFF",
+    },
+    topControls : {
+        flexDirection: 'row',
+        height: 50
     },
     textInput: {
         height: 50,
