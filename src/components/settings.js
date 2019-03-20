@@ -10,23 +10,23 @@ class Settings extends React.Component {
             <View style={styles.container}>
                 <View style={styles.box}>
                     <TouchableOpacity style={styles.button} onPress={() => Actions.menu()}>
-                            <Text>Menu</Text>
-                        </TouchableOpacity>
+                        <Text>Menu</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.box}>
                     <TouchableOpacity style={styles.button} onPress={() => this.login(this.props.username, this.props.password)}>
-                            <Text>xxx</Text>
-                        </TouchableOpacity>
+                        <Text>xxx</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.box}>
                     <TouchableOpacity style={styles.button} onPress={() => this.login(this.props.username, this.props.password)}>
-                            <Text>xxx</Text>
-                        </TouchableOpacity>
+                        <Text>xxx</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.box}>
                     <TouchableOpacity style={styles.button} onPress={() => this.login(this.props.username, this.props.password)}>
-                            <Text>xxx</Text>
-                        </TouchableOpacity>
+                        <Text>xxx</Text>
+                    </TouchableOpacity>
                 </View>
 
             </View>

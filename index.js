@@ -11,6 +11,7 @@ import React from 'react';
 import Login from './src/components/login';
 import Home from './src/components/home';
 import Settings from './src/components/settings';
+import Menu from './src/components/menu';
 
 // Router
 import { Router, Stack, Scene } from 'react-native-router-flux';
@@ -28,7 +29,8 @@ const AppContainer = () =>
             <Stack key="root">
                 <Scene key="login" component={Login} title="Login" /*initial={true} hideNavBar={true}*//>
                 <Scene key="home" component={Home} title="Home"/>
-                <Scene key="settings" component={Settings} title="Settings" initial={true}/>
+                <Scene key="settings" component={Settings} title="Settings"/>
+                <Scene key="menu" component={Menu} title="Menu" initial={true}/>
             </Stack>
         </Router>
     </Provider>
