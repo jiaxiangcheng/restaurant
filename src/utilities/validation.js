@@ -16,7 +16,24 @@ const constraints = {
             minimum: 5,
             message: 'must be at least 5 characters'
         }
-    }
+    },
+    platName: {
+        presence: {
+            message: "Cannot be blank."
+        },
+        length: {
+            minimum: 3,
+            message: 'must be at least 3 characters'
+        }
+    },
+    platPrice: {
+        presence: {
+            message: "Cannot be blank."
+        },
+        numericality: {
+            strict: true
+        }
+    },
 }
   
 export default constraints

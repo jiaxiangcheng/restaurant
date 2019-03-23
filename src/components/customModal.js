@@ -19,17 +19,17 @@ export default class CustomModal extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			taskNameError: ''
+			platNameError: '',
+			platPriceError: ''
 		}
 	}
 
 	showModal = () => {
-		console.log(this.refs.myModal);
 		this.refs.myModal.open();
 	}
 
 	isValidForm() {
-		return this.state.taskNameError == null;
+		return this.state.platNameError == null && this.state.platPriceError == null;
 	}
 
     render() {
@@ -58,29 +58,45 @@ export default class CustomModal extends React.Component {
 										textAlign: 'center',
 										marginTop: 40
 									}}>
-               		New task name:
+               		New Plat:
                 </Text>
               </View>
               <View style={{ justifyContent: 'center', alignItems: 'center'}}>
-                {/* <TextInput 
-                  ref={input => { this.textInput = input }}
+								<Text>Plat name:</Text>
+                <TextInput 
+                  ref={dishName => { this.textInput = dishName }}
                   style={styles.textInput} 
-                  // onChangeText={(changedText) => {
-                  //   this.props.onInputChanged(changedText); 
-                  //   this.setState({
-                  //     taskNameError: validator('taskName', changedText)
-                  //   });
-                  // }}
+                  onChangeText={(name) => {
+                    this.props.onInputChanged(name); 
+                    this.setState({
+                      platNameError: validator('platName', name)
+                    });
+                  }}
                 />
 
-                {this.state.taskNameError ? 
-								<Text style={{color: 'red', textAlign: 'center',}}>{this.state.taskNameError}</Text>
-								: null} */}
+                {this.state.platNameError ? 
+								<Text style={{color: 'red', textAlign: 'center',}}>{this.state.platNameError}</Text>
+								: null}
+								<Text>Plat price:</Text>
+								<TextInput 
+                  ref={dishPrice => { this.textInput = dishPrice }}
+                  style={styles.textInput} 
+                  onChangeText={(price) => {
+                    this.props.onInputChanged2(price); 
+                    this.setState({
+                      platPriceError: validator('platPrice', price)
+                    });
+                  }}
+                />
+
+                {this.state.platPriceError ? 
+								<Text style={{color: 'red', textAlign: 'center',}}>{this.state.platPriceError}</Text>
+								: null}
 
                 <View style={{flexDirection: 'row', marginTop: 20}}>
                   <TouchableOpacity style={styles.saveButton} onPress={() => {
                     if (this.isValidForm()) {
-                      this.props.updateTask();
+                      this.props.addNewPlat();
                       this.refs.myModal.close();
                     }
                     else {
