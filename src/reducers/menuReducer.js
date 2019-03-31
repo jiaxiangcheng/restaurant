@@ -1,7 +1,8 @@
 const initialState = {
     menu: [],
     platName: '',
-    platPrice: ''
+    platPrice: '',
+    platCategory: ''
 };
 
 export default function menuReducer (state = initialState, action) {
@@ -16,10 +17,19 @@ export default function menuReducer (state = initialState, action) {
                 ...state, 
                 platPrice: action.price
             };
+        case 'setPlatCategory' :
+            return {
+                ...state, 
+                platCategory: action.category
+            };
         case 'addPlat' : 
             return {
                 ...state,
-                menu: [...state.menu, {name: action.name, price: action.price}]
+                menu: [...state.menu, {
+                    name: action.name, 
+                    price: action.price, 
+                    category: action.category
+                }]
             };
         default:
             return {

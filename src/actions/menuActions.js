@@ -1,8 +1,11 @@
-export const addPlat = (name, price) => {
+export const addPlat = (name, price, category) => {
+    console.log(category);
+    console.log(name);
     return {
         type: 'addPlat',
         name: name,
-        price: price
+        price: price,
+        category: category
     };
 };
 
@@ -19,3 +22,11 @@ export const setPlatPrice = (price) => {
         price: price
     };
 };
+
+export const setPlatCategory = (category) => {
+    return {
+        type: 'setPlatCategory',
+        category: category
+    };
+};
+

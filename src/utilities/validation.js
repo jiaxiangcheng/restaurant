@@ -34,6 +34,11 @@ const constraints = {
             strict: true
         }
     },
+    platCategory: {
+        presence: {
+            message: "Cannot be blank."
+        }
+    }
 }
   
 export default constraints

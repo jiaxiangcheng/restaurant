@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Button, TextInput, Image, FlatList, TouchableOpacity } from "react-native";
 import { connect } from 'react-redux';
-import { addPlat, setPlatName, setPlatPrice } from '../actions';
+import { addPlat, setPlatName, setPlatPrice, setPlatCategory } from '../actions';
 import CustomModal from './customModal';
 
 class Menu extends React.Component {
@@ -18,8 +18,14 @@ class Menu extends React.Component {
         this.props.setPlatPrice(price);
     }
 
+    setPlatCategory = (category) => {
+        this.props.setPlatCategory(category);
+    }
+
     addNewPlat = () => {
-        this.props.addPlat(this.props.platName, this.props.platPrice);
+        console.log(this.props.platCategory);
+        console.log(this.props.platName);
+        this.props.addPlat(this.props.platName, this.props.platPrice, this.props.platCategory);
     }
 
     listConent () {
@@ -35,6 +41,9 @@ class Menu extends React.Component {
                       </View>
                       <View style={{flex: 4}}>
                         <Text style={styles.rowItem}>{item.price}</Text>
+                      </View>
+                      <View style={{flex: 4}}>
+                        <Text style={styles.rowItem}>{item.category}</Text>
                       </View>
                       <View style={{flex: 2}}>
                         <TouchableOpacity style={styles.button} onPress={() => this.editSelectTask(index)}>
@@ -63,9 +72,27 @@ class Menu extends React.Component {
                     </TouchableOpacity>
                 </View>
 
+                <View style={{flexDirection: 'row'}}>
+                    <View style={{flex: 4}}>
+                        <Text>Name</Text>
+                    </View>
+                    <View style={{flex: 4}}>
+                        <Text>Price</Text>
+                    </View>
+                    <View style={{flex: 4}}>
+                        <Text>Category</Text>
+                    </View>
+                </View>
+
                 {this.listConent()}
 
-                <CustomModal ref={'customModal'} onInputChanged={this.setPlatName} onInputChanged2={this.setPlatPrice} addNewPlat={this.addNewPlat}>
+                <CustomModal 
+                    ref={'customModal'} 
+                    onInputChanged={this.setPlatName} 
+                    onInputChanged2={this.setPlatPrice}
+                    onInputChanged3={this.setPlatCategory} 
+                    addNewPlat={this.addNewPlat}                  
+                >
 
                 </CustomModal>
 
@@ -102,21 +129,24 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
 });
-  
+
+// each change on the reducer, will call this function
 const mapStateToProps = (state) => {
     console.log(state);
     return {
         menu: state.menuReducer.menu,
         platName: state.menuReducer.platName,
-        platPrice: state.menuReducer.platPrice
+        platPrice: state.menuReducer.platPrice,
+        platCategory: state.menuReducer.platCategory
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addPlat: (name, price) => dispatch(addPlat(name, price)),
+        addPlat: (name, price, category) => dispatch(addPlat(name, price, category)),
         setPlatName: (name) => dispatch(setPlatName(name)),
-        setPlatPrice: (price) => dispatch(setPlatPrice(price))
+        setPlatPrice: (price) => dispatch(setPlatPrice(price)),
+        setPlatCategory: (category) => dispatch(setPlatCategory(category))
     }
 }
 

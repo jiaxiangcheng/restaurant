@@ -8,11 +8,11 @@ const validator = (field, value) => {
     object[field] = value
   
     let constraint = constraints[field]
-    console.log(object, constraint)
+    // console.log(object, constraint)
   
     // Validate against the constraint and hold the error messages
     const result = validate(object, { [field]: constraint })
-    console.log(object, constraint, result)
+    // console.log(object, constraint, result)
   
     // If there is an error message, return it!
     if (result) {

@@ -20,7 +20,8 @@ export default class CustomModal extends React.Component {
 		super(props)
 		this.state = {
 			platNameError: '',
-			platPriceError: ''
+			platPriceError: '',
+			platCategoryError: ''
 		}
 	}
 
@@ -41,7 +42,7 @@ export default class CustomModal extends React.Component {
                     borderRadius: Platform.OS === 'ios' ? 30 : 0,
                     shadowRadius: 10,
                     width: screen.width - 80,
-                    height: 280
+                    height: 365
                 }}
                 position='center'
                 backdrop={true}
@@ -61,6 +62,7 @@ export default class CustomModal extends React.Component {
                		New Plat:
                 </Text>
               </View>
+
               <View style={{ justifyContent: 'center', alignItems: 'center'}}>
 								<Text>Plat name:</Text>
                 <TextInput 
@@ -73,10 +75,11 @@ export default class CustomModal extends React.Component {
                     });
                   }}
                 />
-
-                {this.state.platNameError ? 
+								
+								{this.state.platNameError ? 
 								<Text style={{color: 'red', textAlign: 'center',}}>{this.state.platNameError}</Text>
 								: null}
+
 								<Text>Plat price:</Text>
 								<TextInput 
                   ref={dishPrice => { this.textInput = dishPrice }}
@@ -91,6 +94,22 @@ export default class CustomModal extends React.Component {
 
                 {this.state.platPriceError ? 
 								<Text style={{color: 'red', textAlign: 'center',}}>{this.state.platPriceError}</Text>
+								: null}
+
+								<Text>Plat category:</Text>
+								<TextInput 
+                  ref={category => { this.textInput = category }}
+                  style={styles.textInput} 
+                  onChangeText={(category) => {
+                    this.props.onInputChanged3(category); 
+                    this.setState({
+                      platCategoryError: validator('platCategory', category)
+                    });
+                  }}
+                />
+
+                {this.state.platCategoryError ? 
+								<Text style={{color: 'red', textAlign: 'center',}}>{this.state.platCategoryError}</Text>
 								: null}
 
                 <View style={{flexDirection: 'row', marginTop: 20}}>

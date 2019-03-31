@@ -19,20 +19,23 @@ import { Router, Stack, Scene } from 'react-native-router-flux';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducers from './src/reducers/index';
+import { PersistGate } from 'redux-persist/integration/react'
 
 const store = createStore(rootReducers);
 console.log(store.getState());
 
 const AppContainer = () =>  
     <Provider store={store}>
-        <Router>
-            <Stack key="root">
-                <Scene key="login" component={Login} title="Login" /*initial={true} hideNavBar={true}*//>
-                <Scene key="home" component={Home} title="Home"/>
-                <Scene key="settings" component={Settings} title="Settings"/>
-                <Scene key="menu" component={Menu} title="Menu" initial={true}/>
-            </Stack>
-        </Router>
+        {/* <PersistGate loading={null} persistor={persistor}> */}
+            <Router>
+                <Stack key="root">
+                    <Scene key="login" component={Login} title="Login" /*initial={true} hideNavBar={true}*//>
+                    <Scene key="home" component={Home} title="Home"/>
+                    <Scene key="settings" component={Settings} title="Settings"/>
+                    <Scene key="menu" component={Menu} title="Menu" initial={true}/>
+                </Stack>
+            </Router>
+        {/* </PersistGate> */}
     </Provider>
 
 AppRegistry.registerComponent(appName, () => AppContainer);
